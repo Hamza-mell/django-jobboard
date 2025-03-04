@@ -14,3 +14,10 @@ Blog :
 contact
 home 
 login 
+
+
+  path('accounts/',include('accounts.urls')),
+    path('blog/',include('blog.urls')),
+    path('contact/',include('contact.urls')),
+    path('/',include('home.urls')),
+    path('job/',include('job.urls')),
