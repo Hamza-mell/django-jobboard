@@ -2,10 +2,18 @@ from django.db import models
 from django.utils import timezone
 # Create your models here.
 
+
+
 JOB_TYPE = [
     ('Full time','Full time'),
     ('Part time','Part time'),
 ]
+
+class Category(models.Model):
+    name = models.CharField(max_length=25) 
+    def __str__(self):
+        return self.name
+
 class Job(models.Model):
     title = models.CharField(max_length=50)
     #location
@@ -15,4 +23,8 @@ class Job(models.Model):
     vacancy = models.IntegerField(default=1)
     salary = models.IntegerField(default=0)
     experience = models.IntegerField(default=1)
-    #category 
+    category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
+
+    def __str__(self):
+        return self.title
+
